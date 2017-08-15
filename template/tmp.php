@@ -30,7 +30,71 @@
     <div class="starter-template text-center">
         <?=$msg? '<p class="alert-danger">'.$msg : '</p>'?>
 
-lala
+        <table class="table container" style="width: 800px">
+            <tr>
+                <th class="text-center alert-info " >PDO :: MySQL</th>
+            </tr>
+        </table>
+        <table class="table container text-center table-hover table-bordered" style="width: 800px">
+            <tr>
+                <td style="width: 400px">
+                    Insert data in to MySQL
+                    key=user6, data=test6;
+                </td>
+                <td><?=$strSelect? $strSelect : ''?></td>
+            </tr>
+            <tr>
+                <td>
+                    Insert key=user6_100, data=test6 <br>
+                    and<br>
+                    Update, set data=test100,
+                    where key=user6_100
+                </td>
+                <td>
+                    <?=$strSelect2? $strSelect2 : ''?>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Insert key=user6_200, data=test6<br>
+                    and<br>
+                    delete where key=user6_200
+                </td>
+                <td><?if (empty($MyDel)): echo DEL_SUC;  endif;?></td>
+            </tr>
+        </table>
+
+        <table class="table container" style="width: 800px">
+            <tr>
+                <th class="text-center alert-info " >PDO :: PgSQL</th>
+            </tr>
+        </table>
+        <table class="table container text-center table-hover table-bordered" style="width: 800px">
+            <tr>
+                <td style="width: 400px">
+                    Insert data in to PgSQL
+                    key=user6, data=test6;
+                </td>
+                <td><?=$pgStrSelect1? $pgStrSelect1 : ''?></td>
+            </tr>
+            <tr>
+                <td>
+                    Insert key=user6_100, data=test6 <br>
+                    and<br>
+                    Update, set data=test100,
+                    where key=user6_100
+                </td>
+                <td><?=$pgStrSelect2? $pgStrSelect2 : ''?></td>
+            </tr>
+            <tr>
+                <td>
+                    Insert key=user6_200, data=test6<br>
+                    and<br>
+                    delete where key=user6_200
+                </td>
+                <td><?if (empty($PgDel)): echo DEL_SUC;  endif;?></td>
+            </tr>
+        </table>
 
 
 

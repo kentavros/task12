@@ -23,8 +23,7 @@ class SQL
     {
        if ($columName !== '*')
        {
-//           $this->selectProp = "SELECT \"".$columName."\""; //for work pg (" for class)
-           $this->selectProp = "SELECT ".$columName; //for work pg (" for class)
+           $this->selectProp = "SELECT ".$columName;
            return $this;
        }
 
@@ -37,8 +36,8 @@ class SQL
      */
     public function from($tableName)
 	{
-//		$this->fromProp = " FROM \"".$tableName."\"";//for work pg(" for class)
-		$this->fromProp = " FROM ".$tableName;
+//		$this->fromProp = " FROM \"".$tableName."\"";//for work pg
+		$this->fromProp = " FROM ".$tableName; //FOR class PC 3.!!!
 		return $this;
 	}
 
@@ -48,15 +47,14 @@ class SQL
      * @param $tableName
      * @return $this
      */
-    public function where($val, $tableName){
+    public function where($field, $val, $tableName){
         if ($tableName == PG_TB_NAME)
         {
-//            $this->whereProp = " WHERE \"key\"="."'".$val."'";//for work pg(" for class)
-            $this->whereProp = " WHERE key="."'".$val."'";
+            $this->whereProp = " WHERE ".$field."="."'".$val."'";
             return $this;
         } else
         {
-            $this->whereProp = " WHERE `key`="."'".$val."'";
+            $this->whereProp = " WHERE `".$field."`="."'".$val."'";
             return $this;
         }
     }
@@ -68,16 +66,17 @@ class SQL
      */
     public function insertInto($tableName)
     {
+        $_SESSION['tbName'] = $tableName;
         if ($tableName == PG_TB_NAME)
         {
-//            $this->insertProp = "INSERT INTO \"".$tableName."\" (\"key\", \"data\")"; //for work pg(" for class)
-            $this->insertProp = "INSERT INTO ".$tableName." (key, data)";
+//            $this->insertProp = "INSERT INTO \"".$tableName."\" (key, data)"; //for work pg 1.!!!
+            $this->insertProp = "INSERT INTO ".$tableName." (key, data)"; //for class
             $this->flag = 1;
             return $this;
         }
         else
         {
-            $this->insertProp = "INSERT INTO ".$tableName." (`key`, `data`)"; //PROVERITb NA RABOTE!!!!!!
+            $this->insertProp = "INSERT INTO ".$tableName." (`key`, `data`)";
             return $this;
         }
 
@@ -91,6 +90,8 @@ class SQL
      */
     public function values($key, $data)
     {
+        $_SESSION['key'] = $key;
+        $_SESSION['data'] = $data;
         $this->valuesProp = " VALUES ('".$key."', '".$data."')";
         return $this;
     }
@@ -113,8 +114,8 @@ class SQL
      */
     public function update($tableName)
     {
-//        $this->updateProp = "UPDATE \"".$tableName."\""; //PROVERITb NA RABOTE!!!!!!
-        $this->updateProp = "UPDATE ".$tableName; //PROVERITb NA RABOTE!!!!!!
+//        $this->updateProp = "UPDATE \"".$tableName."\""; //For worK PC
+        $this->updateProp = "UPDATE ".$tableName; // FOR CLASS 5.!!!!
         $this->flag = 1;
         return $this;
     }
@@ -128,6 +129,9 @@ class SQL
      */
     public function set($field, $value, $tableName)
     {
+        $_SESSION['field'] = $field;
+        $_SESSION['value'] = $value;
+        $_SESSION['tbName'] = $tableName;
         if ($tableName == PG_TB_NAME)
         {
             $this->setProp = " SET ".$field."='".$value."'";       

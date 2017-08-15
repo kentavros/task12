@@ -1,4 +1,5 @@
 <?php
+session_start();
 /**
  * Message
  */
@@ -20,6 +21,23 @@ define('ERROR_QUERY', 'Error query! ');
 //No row
 define('NO_ROW', 'No row - user6');
 
+//Qery sql success done
+define('DONE', 'Sql query done!');
+
+//Delete successfully
+define('DEL_SUC', 'Delete successfully!');
+
+//SQL query str find
+define('SELECT', 'select');
+define('UPDATE', 'update');
+define('INSERT', 'insert');
+define('DELETE', 'delete');
+
+//undefined sql query
+define ('UNDEF_SQL', 'Undefined sql query!');
+
+//Such a record exists
+define('EXIST_REC', 'Such a record exists!');
 
 
 /**
@@ -40,10 +58,10 @@ define('TB_NAME', 'MY_TEST');
 /**
  *for Data Base PostgreSQL
  */
+define('DSN_PG', 'pgsql:host=localhost;port=5432;dbname=user1;user=user1;password=user1z');
 
 define('PG_CONNECT', "host=localhost dbname=user1 user=user1 password=user1z");
 
 define('PG_TB_NAME', 'PG_TEST');
-
 
 ?>
